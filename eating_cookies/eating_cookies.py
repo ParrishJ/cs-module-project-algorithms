@@ -20,27 +20,26 @@ def eating_cookies(n):
     else: 
         def helper(n, currChoices):
             # base case - num_cookies == 0
-            if n == 0:
+            if n <= 0:
                 nonlocal possibilities
-                possibilities += 1
+                if n == 0:
+                    possibilities += 1
                 return
 
             for way in range(ways_to_eat):
             
                 # make case if next possibility will make cookie monster eat too many cookies
-                if currChoices + (way + 1) < -1:
-                    return
-                else:
-                    helper(0, currChoices + (way + 1))
+                helper(n - (way + 1), currChoices + (way + 1))
         
-            return possibilities
-
         helper(n, 0)
-
+        return possibilities
     return possibilities
+        
+
+    #return possibilities
        
 
-print(eating_cookies(2))
+print(eating_cookies(10))
 
 
 """ if __name__ == "__main__":
