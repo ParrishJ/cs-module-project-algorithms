@@ -2,11 +2,28 @@
 Input: a List of integers
 Returns: a List of integers
 '''
+import math
+
 def product_of_all_other_numbers(arr):
-    # Your code here
 
-    pass
+    # import math module
+    # loop through array - at each index, set the value to 1, removing it from the final product. 
+    # Use the math.prod to get product of rest of array, push that value to the products array,
+    # then reset the index back to its initial value
 
+    products = []
+    
+    temp = None
+
+    for i in range(len(arr)):
+        temp = arr[i]
+        arr[i] = 1
+        products.append(math.prod(arr))
+        arr[i] = temp
+        
+    return products
+    
+#Made a slight imporovement on this by appending to empty array instead of copying entire array over 
 
 if __name__ == '__main__':
     # Use the main function to test your implementation
